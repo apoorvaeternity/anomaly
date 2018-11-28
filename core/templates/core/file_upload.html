@@ -1,0 +1,34 @@
+{% load static %}
+{% load staticfiles %}
+{% load materializecss %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anomaly Detection</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'particles.js' %}"></script>
+</head>
+<body>
+<div id="particles-js" style="z-index: -1;position: absolute;
+    width: 100%;
+    height: 100%;"></div>
+<h1 align="center">Anomaly Detection</h1>
+<div style="margin:10% 20% 0% 20%" align="center">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|materializecss }}
+        <input class="waves-effect waves-light btn" type="submit" value="Upload">
+    </form>
+</div>
+<script defer="defer">
+    particlesJS.load('particles-js', '{% static 'particles.json' %}', function () {
+        console.log('callback - particles.js config loaded');
+    });
+</script>
+</body>
+</html>
