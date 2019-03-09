@@ -1,20 +1,41 @@
+{% load static %}
+{% load staticfiles %}
+{% load materializecss %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Anomaly Detection</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var options = document.querySelectorAll('option');
+            var instances = M.FormSelect.init(elems, options);
+        });
+    </script>
 </head>
 <body>
 <h1 align="center">Anomaly Detection</h1>
 <h3 align="center">Rainfall for region {{ state }}</h3>
-<div style="margin:2% 20% 0% 20%" align="center">
+<h3 align="center">Threshold: {{ threshold }}mm</h3>
+<div class="container">
+  <div class="row">
+<div align="left">
     {% autoescape off %}
         {{ plot }}
     {% endautoescape %}
+</div>
+<div align="right">
+<form method="get">
+    {{ mv_avg_form|materializecss }}
+    <input class="waves-effect waves-light btn" type="submit" value="Compute">
+</form>
+</div>
+  </div>
 </div>
 </body>
 </html>
