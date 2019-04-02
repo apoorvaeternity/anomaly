@@ -5,9 +5,13 @@ from django.forms import Form
 class FileUploadForm(Form):
     available_datasets = ['Rainfall in India']
     dataset_choices = ((dataset, dataset) for dataset in available_datasets)
+    algorithm_choices = (('Moving Average', 'Moving Average'), ('ARIMA', 'ARIMA'))
     supported_datasets = forms.ChoiceField(choices=dataset_choices, label='Supported Datasets',
-                                           widget=forms.Select(attrs = {'class': 'form-control',
-                                                                               'data-toggle': 'select'}))
+                                           widget=forms.Select(attrs={'class': 'form-control',
+                                                                      'data-toggle': 'select'}))
+    algorithm = forms.ChoiceField(choices=algorithm_choices, label='Select Alorithm',
+                                  widget=forms.Select(attrs={'class': 'form-control',
+                                                             'data-toggle': 'select'}))
     file = forms.FileField(label='Select a CSV file', widget=forms.FileInput(attrs={'accept': '.csv'}))
 
 

@@ -19,17 +19,17 @@
     </script>
 </head>
 <body>
-<h1 align="center">Anomaly Detection</h1>
+<h2 align="center">Anomaly Detection using {{ algorithm }}</h2>
 <h3 align="center">Rainfall for region {{ state }}</h3>
 <h3 align="center">Threshold: {{ threshold }}mm</h3>
 <div class="container">
   <div class="row">
-<div align="left">
+<div align="center">
     {% autoescape off %}
         {{ plot }}
     {% endautoescape %}
 </div>
-<div align="right">
+<div align="center">
 <form method="get">
     {{ mv_avg_form|materializecss }}
     <input class="waves-effect waves-light btn" type="submit" value="Compute">
