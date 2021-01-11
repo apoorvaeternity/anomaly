@@ -1,0 +1,6 @@
+- Create a new virtual environment and activate it
+- Run `cd anomaly`
+- Run `pip install -r requirements.txt`
+- Run `python manage.py migrate`
+- Run `python manage.py runserver` and access it on `127.0.0.1:8000`
+- Use the rainfall_in_india.csv provided in the repo.
